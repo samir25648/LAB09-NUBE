@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear elemento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+            border-color: #ccc;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #80bdff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .btn-primary:active,
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: none;
+            opacity: 0.7;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+        }
+
+        .back-link {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #0069d9;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-center">Crear nuevo elemento</h1>
+        <hr>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Ingrese el título" required>
+            </div>
+            <div class="form-group">
+                <label for="image" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+
+    <a href="/" class="btn btn-primary back-to-top" title="Volver a la página principal">Volver</a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        // Botón de retroceso
+        var backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
+            
